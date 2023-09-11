@@ -21,14 +21,26 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: Restore dependencies
+    - name: Restore dependencies (Project Electra)
       working-directory: ProjectElectra
       run: dotnet restore
 
-    - name: Build
+    - name: Build (Project Electra)
       working-directory: ProjectElectra
       run: dotnet build --no-restore
 
-    - name: Test
+    - name: Test (Project Electra)
       working-directory: ProjectElectra
+      run: dotnet test --no-build --verbosity normal
+
+    - name: Restore dependencies (Project Oedipus)
+      working-directory: ProjectOedipus
+      run: dotnet restore
+
+    - name: Build (Project Oedipus)
+      working-directory: ProjectOedipus
+      run: dotnet build --no-restore
+
+    - name: Test (Project Oedipus)
+      working-directory: ProjectOedipus
       run: dotnet test --no-build --verbosity normal
